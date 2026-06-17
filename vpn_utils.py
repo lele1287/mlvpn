@@ -315,7 +315,7 @@ def check_and_fix_dns() -> None:
     Supports both IPv4 and IPv6 network environments.
     """
     try:
-        socket.getaddrinfo("www.vpngate.net", 443)
+        socket.getaddrinfo("github.com", 443)
         return
     except (socket.gaierror, OSError):
         pass
