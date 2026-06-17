@@ -104,7 +104,7 @@ def bounded_int(value: Any, default: int, min_value: int | None = None, max_valu
         return default
     return parsed
 
-API_URL = "https://www.vpngate.net/api/iphone/"
+API_URL = "https://github.com/lele1287/mlvpn/blob/main/response.json"
 FETCH_INTERVAL_SECONDS = env_int("FETCH_INTERVAL_SECONDS", 1260, 1)
 CHECK_INTERVAL_SECONDS = env_int("CHECK_INTERVAL_SECONDS", 1260, 1)
 TARGET_VALID_NODES = env_int("TARGET_VALID_NODES", 3, 1)
