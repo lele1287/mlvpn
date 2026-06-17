@@ -479,14 +479,31 @@ def enrich_ip_info(nodes: list[dict[str, Any]]) -> None:
             node["quality"] = cached.get("quality", "")
 
 
-def diagnose_api_failure(api_url: str = "https://www.vpngate.net/api/iphone/") -> tuple[int, str]:
+import urllib.parse
+
+def diagnose_api_failure(api_url: str = "http://www.vpngate.net/api/iphone/") -> tuple[int, str]:
     try:
         parsed = urllib.parse.urlsplit(api_url)
+
+        # 如果用户没写 scheme，则默认使用 http
+        scheme = parsed.scheme or "http"
+
         domain = parsed.hostname or "www.vpngate.net"
-        port = parsed.port or (443 if parsed.scheme == "https" else 80)
+
+        # 根据 scheme 自动选择端口
+        if parsed.port:
+            port = parsed.port
+        else:
+            port = 80 if scheme == "http" else 443
+
     except Exception:
+        # fallback：全部使用 http
         domain = "www.vpngate.net"
-        port = 443
+        port = 80
+        scheme = "http"
+
+    return port, f"{scheme}://{domain}"
+
 
     # 1. 检查本地 DNS 解析是否完全失效
     dns_ok = False
