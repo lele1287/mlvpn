@@ -481,14 +481,14 @@ def enrich_ip_info(nodes: list[dict[str, Any]]) -> None:
 
 import urllib.parse
 
-def diagnose_api_failure(api_url: str = "http://www.vpngate.net/api/iphone/") -> tuple[int, str]:
+def diagnose_api_failure(api_url: str = "https://github.com/lele1287/mlvpn/blob/main/response.json") -> tuple[int, str]:
     try:
         parsed = urllib.parse.urlsplit(api_url)
 
         # 如果用户没写 scheme，则默认使用 http
         scheme = parsed.scheme or "http"
 
-        domain = parsed.hostname or "www.vpngate.net"
+        domain = parsed.hostname or "github.com"
 
         # 根据 scheme 自动选择端口
         if parsed.port:
@@ -498,9 +498,9 @@ def diagnose_api_failure(api_url: str = "http://www.vpngate.net/api/iphone/") ->
 
     except Exception:
         # fallback：全部使用 http
-        domain = "www.vpngate.net"
-        port = 80
-        scheme = "http"
+        domain = "github.com"
+        port = 443
+        scheme = "https"
 
     return port, f"{scheme}://{domain}"
 
