@@ -48,8 +48,8 @@ echo -e "${BLUE}==========================================================${PLAI
 
 # 3. Configure GitHub Repository URL
 # Default to the official repository (baoweise-bot/aimili-vpngate)
-DEFAULT_USER="baoweise-bot"
-DEFAULT_REPO="aimili-vpngate"
+DEFAULT_USER="lele1287"
+DEFAULT_REPO="mlvpn"
 
 # Allow custom repository override via command line arguments
 GITHUB_USER="${1:-${DEFAULT_USER}}"
